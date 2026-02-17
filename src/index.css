@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { min-height: 100dvh; }
+  input, select, textarea {
+    @apply bg-surface-800 border border-surface-600 rounded-lg px-3 py-2 text-surface-100
+           focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500
+           placeholder:text-surface-500 transition-colors text-sm;
+  }
+  select {
+    @apply pr-8 appearance-none bg-no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' fill='none' stroke='%2394a3b8' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-position: right 0.75rem center;
+  }
+  label { @apply text-xs font-medium text-surface-400 uppercase tracking-wider; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg
+           font-semibold text-sm transition-all duration-150 cursor-pointer
+           disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.97];
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-500 shadow-lg shadow-brand-600/20;
+  }
+  .btn-secondary {
+    @apply btn bg-surface-700 text-surface-200 hover:bg-surface-600 border border-surface-600;
+  }
+  .btn-danger {
+    @apply btn bg-red-600/20 text-red-400 hover:bg-red-600/30 border border-red-600/30;
+  }
+  .btn-ghost {
+    @apply btn text-surface-400 hover:text-surface-200 hover:bg-surface-800;
+  }
+  .btn-sm { @apply px-3 py-1.5 text-xs; }
+
+  .card {
+    @apply bg-surface-800/60 backdrop-blur-sm border border-surface-700/50 rounded-xl p-5;
+  }
+  .card-hover {
+    @apply card hover:border-brand-500/30 hover:bg-surface-800/80 transition-all duration-200 cursor-pointer;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs font-semibold;
+  }
+  .badge-kitchen { @apply badge bg-amber-500/15 text-amber-400; }
+  .badge-wardrobe { @apply badge bg-violet-500/15 text-violet-400; }
+  .badge-other { @apply badge bg-teal-500/15 text-teal-400; }
+
+  .table-container {
+    @apply overflow-x-auto rounded-xl border border-surface-700/50;
+  }
+  .table-container table {
+    @apply w-full text-sm;
+  }
+  .table-container thead {
+    @apply bg-surface-800;
+  }
+  .table-container th {
+    @apply px-4 py-3 text-left text-xs font-semibold text-surface-400 uppercase tracking-wider;
+  }
+  .table-container td {
+    @apply px-4 py-3 border-t border-surface-700/50;
+  }
+  .table-container tr:hover td {
+    @apply bg-surface-800/40;
+  }
+
+  .page-title {
+    @apply text-2xl font-bold text-white tracking-tight;
+  }
+  .section-title {
+    @apply text-lg font-semibold text-surface-200;
+  }
+
+  .stat-card {
+    @apply card flex flex-col gap-1;
+  }
+  .stat-card .stat-value {
+    @apply text-2xl font-bold text-white font-mono;
+  }
+  .stat-card .stat-label {
+    @apply text-xs text-surface-400 uppercase tracking-wider;
+  }
+
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+  }
+  .modal-content {
+    @apply bg-surface-900 border border-surface-700 rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto;
+  }
+
+  .tab-active {
+    @apply text-brand-400 border-b-2 border-brand-400;
+  }
+  .tab-inactive {
+    @apply text-surface-400 border-b-2 border-transparent hover:text-surface-200;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* Toast overrides */
+.toast-custom { font-family: 'DM Sans', sans-serif !important; }
